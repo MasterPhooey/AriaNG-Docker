@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  aria2-webui:
+    build: .
+    ports:
+      - "6800:6800"  # Aria2 RPC port
+      - "8080:80"    # Web UI port
+    volumes:
+      - ./downloads:/downloads  # Map downloads directory to host machine
+      - ./aria2.conf:/root/.aria2/aria2.conf  # Mount aria2.conf
+    environment:
+      - ARIA2_RPC_SECRET=mysecret  # Pass secret securely at runtime
+    env_file:
+      - .env
