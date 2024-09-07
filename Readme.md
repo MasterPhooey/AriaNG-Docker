@@ -1,4 +1,4 @@
-# AriaNG-Docker
+# Aria2 + AriaNg Docker Setup
 
 This project provides a Dockerized setup for running **Aria2** with the **AriaNg** WebUI for managing downloads. The WebUI is served via Nginx, and Aria2 is configured to support RPC for remote download management.
 
@@ -14,15 +14,17 @@ This project provides a Dockerized setup for running **Aria2** with the **AriaNg
 
 ## Running the Container
 
+You can pull the pre-built Docker image from [Docker Hub](https://hub.docker.com/r/masterphooey/ariang-docker):
+
+### Pull the Image
+
+   ```docker pull masterphooey/ariang-docker:latest```
+
 ### Build and Run with Docker
 
-1. Build the Docker image:
+1. Run the Docker container:
 
-   ```docker build -t yourusername/aria2-webui .```
-
-2. Run the Docker container:
-
-   ```docker run -p 6800:6800 -p 8080:80 -v $(pwd)/downloads:/downloads yourusername/aria2-webui```
+   ```docker run -p 6800:6800 -p 8080:80 -v $(pwd)/downloads:/downloads masterphooey/ariang-docker```
 
    - Port 6800: Aria2 RPC port (used by AriaNg to communicate with Aria2)
    - Port 8080: Web UI served by Nginx
